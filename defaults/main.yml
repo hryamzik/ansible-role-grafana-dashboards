@@ -1,0 +1,4 @@
+grafana_dashboards_local_path: "{{ playbook_dir }}/templates/grafana_dashboards"
+grafana_username: admin
+grafana_password: admin
+grafana_url: "http://127.0.0.1:3000"

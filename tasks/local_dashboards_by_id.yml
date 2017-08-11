@@ -1,0 +1,9 @@
+- name: fail on duplicate local dashboard ID
+  fail: msg="'{{ local_dashboards_by_path[item].title }}' ({{ item }})
+             and '{{ local_dashboards_by_id[local_dashboards_by_path[item].id].dashboard.title }}'
+             ({{ local_dashboards_by_id[local_dashboards_by_path[item].id].path }}) dashboards have the same ID"
+  when: local_dashboards_by_path[item].id in local_dashboards_by_id.keys()
+  
+- name: add {{ local_dashboards_by_path[item].title }} to local_dashboards_by_id[{{ local_dashboards_by_path[item].id }}]
+  set_fact:
+    local_dashboards_by_id: "{{ local_dashboards_by_id|combine({local_dashboards_by_path[item].id: {'path': item, 'dashboard': local_dashboards_by_path[item]}}) }}"
