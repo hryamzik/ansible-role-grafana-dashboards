@@ -1,3 +1,7 @@
+# grafana-dashboards
+
+Ansible role designed to sync grafana dashbroards with local directory.
+
 ### Limitations
 
 Only DB dashboards are supported. Only grafana installations with only DB dashboards should work properly.
