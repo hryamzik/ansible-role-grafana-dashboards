@@ -1,3 +1,11 @@
+- name: ensure local path exists ({{ grafana_dashboards_local_path }}/mappings)
+  become: no
+  delegate_to: localhost
+  file:
+    path: "{{ grafana_dashboards_local_path }}/mappings"
+    state: directory
+    recurse: true
+
 - grafana_dashboard_sync:
     path: "{{ grafana_dashboards_local_path }}"
     name: "{{ inventory_hostname }}"
